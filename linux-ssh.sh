@@ -2,6 +2,9 @@
 #!/bin/bash
 # /home/runner/.ngrok2/ngrok.yml
 
+sudo apt update
+sudo apt install neofetch
+sudo neofetch
 sudo useradd -m $LINUX_USERNAME
 sudo adduser $LINUX_USERNAME sudo
 echo "$LINUX_USERNAME:$LINUX_USER_PASSWORD" | sudo chpasswd
