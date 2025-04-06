@@ -23,9 +23,8 @@ fi
 
 echo "### Install ngrok ###"
 
-wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-386.zip
-unzip ngrok-stable-linux-386.zip
-chmod +x ./ngrok
+wget -q https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-386.tgz
+sudo tar -xvzf ~/Downloads/ngrok-v3-stable-linux-386.tgz -C /usr/local/bin
 
 echo "### Update user: $USER password ###"
 echo -e "$LINUX_USER_PASSWORD\n$LINUX_USER_PASSWORD" | sudo passwd "$USER"
@@ -34,8 +33,8 @@ echo "### Start ngrok proxy for 22 port ###"
 
 
 rm -f .ngrok.log
-./ngrok authtoken "$NGROK_AUTH_TOKEN"
-./ngrok tcp 22 --log ".ngrok.log" &
+ngrok authtoken "$NGROK_AUTH_TOKEN"
+ngrok tcp 22 --log ".ngrok.log" &
 
 sleep 10
 HAS_ERRORS=$(grep "command failed" < .ngrok.log)
